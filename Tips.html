@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<!--Kelly Turner-->
+<html>
+	<head>
+		<title>Advice</title>
+		<script>
+			function Initialize()
+			{
+				comments = [];/*empty array*/
+				newComment = document.getElementById("post");/*refers to input tag*/
+				commentOutput = document.getElementById("commentoutput");/*refers to div tag*/
+				commentElimination = document.getElementById("oldcomment");/*post to be deleted*/
+				
+				errorMsg = document.getElementById("errormessage");
+				deleteMsg = document.getElementById("seconderrormsg");
+
+				commentRevision = document.getElementById("editedComment");
+
+				display();
+			}
+			function display()
+			{
+				var i = 0;
+				var output = ""; /*will be empty string when i is less than 0???*/
+				
+				while (i < comments.length) /*index is less than comment array*/
+				{
+					output += "[" + i + "]:  " + comments[i] + "<br />";/*builds output string by cancatonating output with i as comment at that position in array*/
+					/*cancatonate break tag onto above line to have posts on diff lines*/
+					i++;/*makes sure isn't endless loop*/
+				}/*first time thru above function: reports i at position 0 in array; then cont to report i and check if it's < length of array*/
+				commentOutput.innerHTML = output;
+				newComment.value = "";/*if anything typed in, input box will be cleared*/	
+				commentElimination.value = "";
+			}
+			
+			function post()
+			{
+				var thePost = newComment.value;/*property of input tag; what user types in*/
+				/*to check is item is already in list:*/
+				if(comments.indexOf(thePost) == -1)/*search for comments got back -1; didn't find item*/
+				{
+					comments.push(thePost);/*places var in array*/
+				}
+				else
+				{
+					errorMsg.innerHTML = thePost + " has already been posted.";
+				}
+				display();
+			}
+			function deletePost()
+			{
+				/*splice*/
+				var comment = commentElimination.value;
+				if(comments.indexOf(comment) == -1)
+				{
+					deleteMsg.innerHTML = comment + " is not a comment.";
+				}
+				else
+				{
+					comments.splice(comments.indexOf(comment),1);
+					
+				}
+				display();
+			}
+			//function deletePost()
+			//{
+				/*splice*/
+			//	var comment = commentElimination.value;
+			//	if(comments.indexOf(comment) == -1)
+			//	{
+			//		deleteMsg.innerHTML = comment + " is not a comment.";
+			//	}
+			//	else
+			//	{
+			//		comments.splice(comments.indexOf(comment),1);//tried to first delete the unedited comment,
+			//		var revision = commentRevision.value;//assign a variable to the entered edited comment,
+			//		comments.splice(comments.indexOf(comment),0,revision);//then to enter the edited commment into 	the array.
+					//the error items in my html:
+						//<button id = "edit" onclick = "editPost();">Edit Post</button>
+						//<input id = "editedComment" type = "any" size = "70"/>
+						//<div> To edit a post, type in the comment you want to edit, then type in the edited version below:</div>
+						//<input id = "editedComment2" type = "any" size = "70" />
+			//	}
+			//	display();
+			//}
+		</script>
+		<style>
+		h1
+		{
+			text-align : center;
+			font-family: 'Courier New', monospace;
+			font-size: 50px;
+			font-weight: 500;
+			line-height: 26px;
+			color : darkgrey;
+			padding-top : 50px;
+			padding-right : 400px;
+			padding-left : 400px;
+		}
+		ol 
+		{
+    		list-style-type: none;
+    		margin: 0;
+    		padding: 0;
+    		overflow: hidden;
+    		background-image: url('space.gif');
+		}
+
+		li 
+		{
+    		float: left;
+		}
+
+		li a 
+		{
+    		display: inline-block;
+    		color: darkgrey;
+    		text-align: center;
+    		padding: 14px 16px;
+    		font-weight : 500;
+			font-family: 'Courier New', monospace;
+    		text-decoration: none; 
+		}		
+		a:hover
+		{
+			color : white;
+		}
+		div
+		{
+			font-family: 'Courier New', monospace;
+			color : darkgrey;
+			
+		}
+		#header
+		{
+			text-align : center;
+		}
+		input
+		{
+			text-align : center;
+			outline : none;
+	
+		}
+		input:focus
+		{
+
+			border : 2px dashed darkgrey;
+			
+		}
+		button
+		{
+			/*background-color : darkgrey;
+			padding : 5px;
+			border-radius : 4px;*/
+			background-color: darkgrey; /* Green */
+			border: none;
+			color: white;
+			padding: 5px 15px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+
+		}
+		#commentoutput
+		{
+			text-align : center;
+			width : 40%;
+		}
+		</style>
+	</head>
+	<body onload = "Initialize();">
+		<h1>Studious</h1>
+		
+		<ol>
+			<li><a href = "Intro.html" />What Is This?</a></li>
+			<li><a href = "Inspo.html" />Inspiration</a></li>
+			<li><a href = "Tips.html" />Advice</a></li>
+			<li><a href = "Calm.html" />Staying Calm</a></li>
+			<li><a href = "Notes.html" />Note Taking</a></li>
+			<li><a href = "index.html" />Home</a></li>
+		</ol>
+		<br />
+		<div id = "header">Have advice of your own? Comment below! Make sure to include a username and date in your post.</div>
+		<div id = "style"></div><br />
+
+		<div class = "commentoutput" id = "commentoutput"></div>
+
+		<button id = "submit" onclick = "post();">Submit</button>
+		<input id = "post" type = "any" size = "70"/>
+		
+		<br />
+		<div id = "errormessage"></div>
+		<br />
+		<button id = "delete" onclick = "deletePost();">Delete</button>
+		<input id = "oldcomment" type = "any" size = "70"/>
+		<div id = "seconderrormsg"></div>
+		<br />
+		
+		
+		
+	</body>
+	
+
+</html>

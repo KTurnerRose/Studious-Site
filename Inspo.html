@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<!--Kelly Turner-->
+<html>
+	<head>
+		<title>Inspiration</title>
+		<script>
+			function Initialize()
+			{
+
+				images = ["desk inspo1.jpg", "inspo2.jpg", "inspo3.jpg", "inspo4.jpg", "inspo5.jpg", "desk inspo2.jpeg", "sept planner.jpg", "desk inspo3.jpg", "notes inspo1.jpg", "desk inspo4.jpg", "notes inspo2.jpg"];
+		
+				currentpic = 0;
+				lastpic = images.length-1;
+			}
+			
+			function changeImage(num)
+            {
+                
+				currentpic = currentpic + num;
+				if (currentpic > lastpic)
+                {
+                    currentpic = 0;
+                }
+                else if (currentpic < 0)
+                {
+                    currentpic = lastpic;
+                }
+				document.getElementById('bigImg').src = images[currentpic];
+            }
+
+			/*function changeImage(num)
+			{
+				output = "";
+				var u = images.length - 1;
+				u = u + num;
+				document.getElementById("bigImg").innerHTML = images[u];
+				
+			}*/
+		</script>
+		<style>
+		h1
+		{
+			text-align : center;
+			font-family: 'Courier New', monospace;
+			font-size: 50px;
+			font-weight: 500;
+			line-height: 26px;
+			color : darkgrey;
+			padding-top : 50px;
+			padding-right : 400px;
+			padding-left : 400px;
+		}
+		ol 
+		{
+    		list-style-type: none;
+    		margin: 0;
+    		padding: 0;
+    		overflow: hidden;
+    		background-image: url('space.gif');
+		}
+
+		li 
+		{
+    		float: left;
+		}
+
+		li a 
+		{
+    		display: inline-block;
+    		color: darkgrey;
+    		text-align: center;
+    		padding: 14px 16px;
+    		font-weight : 500;
+			font-family: 'Courier New', monospace;
+    		text-decoration: none; 
+		}		
+		a:hover
+		{
+			color : white;
+		}
+		div
+		{
+			font-family: 'Courier New', monospace;
+			color : darkgrey;
+			text-align : center;
+		}
+		#bigImg
+		{
+			align-items : center; /*padding top right bottom left*/
+			width : 400px; height : 360px;
+		}
+		li > img 
+		{
+			display:none;
+			height:40px;
+		}
+		#leftArrow 
+		{
+			width : 200px; height : 400px;
+			.display: inline-block;
+			position : absolute;
+			left : 15%;
+			.float : left;
+			margin-right: 5%;
+		}
+		#leftArrow img
+		{
+			width : 10%; height : 10%;
+			padding-top : 150px;
+			position : absolute;
+		}
+		#leftArrow img:hover
+		{
+			color : pink;
+		}
+		#rightArrow 
+		{
+			width : 200px; height : 400px;
+			.display: inline-block;
+			position : absolute;
+			left : 66%;
+			.float : right;
+			.padding : 10px;
+			margin-left: 5%;
+		}
+		#rightArrow img
+		{
+			width : 10%; height : 10%;
+			padding-top : 150px;
+			position : absolute;
+		}
+		#rightArrow img:hover
+		{
+			color : pink;
+		}
+		#dispImg
+		{
+			width : 28%;
+			margin : auto;
+			padding-top: 30px;
+		}
+		</style>
+	</head>
+	<body onload = "Initialize();">
+		<h1>Studious</h1>
+		
+		<ol>
+			<li><a href = "Intro.html" />What Is This?</a></li>
+			<li><a href = "Inspo.html" />Inspiration</a></li>
+			<li><a href = "Tips.html" />Advice</a></li>
+			<li><a href = "Calm.html" />Staying Calm</a></li>
+			<li><a href = "Notes.html" />Note Taking</a></li>
+			<li><a href = "index.html" />Home</a></li>
+		</ol>
+		<br />
+		
+		
+		<div id = "dispImg">
+			<div id = "leftArrow">
+				<img  src = "left arrow.png" onclick = "changeImage(-1);" />
+				
+			</div>
+			<div id = "rightArrow">
+				<img src = "right arrow.png" onclick = "changeImage(1);" />
+				
+			</div>
+			<div>
+				<img src = "desk inspo1.jpg" id = "bigImg" />
+			</div>
+		</div>
+		
+
+	</body>
+	
+
+</html>
